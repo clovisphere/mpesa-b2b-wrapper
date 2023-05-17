@@ -15,6 +15,7 @@ pymysql = "*"
 flask-mysql = "*"
 cryptography = "*"
 pycryptodome = "*"
+flask-cors = "*"
 
 [dev-packages]
 pytest = "*"

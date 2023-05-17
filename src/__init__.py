@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from config.default import config
+from flask_cors import CORS
 
 db = SQLAlchemy()
 
@@ -8,6 +9,7 @@ db = SQLAlchemy()
 def create_app(config_name):
     """Create an application instance."""
     app = Flask(__name__)
+    CORS(app)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     db.init_app(app)
