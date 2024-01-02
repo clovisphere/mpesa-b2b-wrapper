@@ -16,7 +16,7 @@ m = MPESA(
 )
 
 # endpoint
-endpoint = 'http://localhost:8080/mpesa/b2b/v1/remittax'
+endpoint = 'http://127.0.0.1:8080/mpesa/b2b/v1/remittax'
 
 # headers
 headers = {
@@ -34,9 +34,9 @@ payload = {
     'Initiator': 'Safaricom',
     'PartyA': '222',
     'PartyB': 'Tax123@example',
-    'QueueTimeOutURL': 'http://localhost:5000/api/v1.0/payment/timeout',
+    'QueueTimeOutURL': 'http://127.0.0.1:8000/api/v1.0/payment/timeout',
     'Remarks': 'B2B payment.',
-    'ResultURL': 'http://localhost:5000/api/v1.0/payment/confirm',
+    'ResultURL': 'http://127.0.0.1:8000/api/v1.0/payment/confirm',
     'SecurityCredential': 'mock_encrypted_password'
 }
 
