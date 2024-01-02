@@ -95,7 +95,7 @@ To run unittest,
 ```bash
 # install dev dependencies
 $ pipenv install --dev
- # run tests
+# run tests
 $ coverage run -m pytest
 # generate coverage report
 $ coverage report -m
