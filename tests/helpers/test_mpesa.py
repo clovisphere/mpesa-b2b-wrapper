@@ -67,7 +67,6 @@ def test_make_successful_initiate_b2b_call(app, mocker):
         assert response['status_code'] == '0'
         assert response['account_reference'] == m.data['pnr']
 
-
 def test_make_unsuccessful_initiate_b2b_call(app, mocker):
     """Test that B2B API returns an error and the initiate_b2b method handles it."""
     with app.app_context():
@@ -76,20 +75,17 @@ def test_make_unsuccessful_initiate_b2b_call(app, mocker):
         assert response['status_code'] == '999'
         assert response['account_reference'] == m.data['pnr']
 
-
 def test_rsa_encrypt_raises_correct_exception(app):
     """Test that the rsa_encrypt method raises the correct exception."""
     with app.app_context():
         with pytest.raises(FileNotFoundError):
             m.rsa_encrypt('password', 'not/a/real/path')
 
-
-def test_generate_access_token_raises_correct_exception(app, supply_test_config):
+def test_generate_access_token_raises_correct_exception(app):
     """Test that the generate_access_token method raises the correct exception."""
     with app.app_context():
         with pytest.raises(ValueError):
             m.generate_access_token()
-
 
 def generic_mocking(mocker: MagicMock, status_code: int, mock_response: dict) -> Tuple[dict, bool, MagicMock]:
     """Generic mocking for the initiate_b2b method."""
