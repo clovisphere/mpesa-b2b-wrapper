@@ -1,12 +1,14 @@
 # Git
 .git
 .gitignore
+.github
 # unused .env files
-.env
 .env.dev
+env.sample
 # Docker
 Dockerfile
-docker-compose.yml
+compose.yaml
+compose-prod.yaml
 .dockerignore
 # Virtual environment
 .env/
