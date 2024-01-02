@@ -23,7 +23,7 @@ The below endpoints are available:
 - [x] Logging
 - [ ] Swagger docs
 - [x] CI/CD
-- [x] Dockerize (partially.. only for development)
+- [x] Dockerize
 - [x] Deployment (or how-to section on how to deploy or run the app in production)
 
 ## Usage
