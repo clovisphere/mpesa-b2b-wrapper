@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      args:
+        ENVIRONMENT: production
+    ports:
+      - "9999:9999"
+    environment:
+      - SQLALCHEMY_DATABASE_URI=${DATABASE_URL}
