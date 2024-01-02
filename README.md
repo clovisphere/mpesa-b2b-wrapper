@@ -28,10 +28,10 @@ The below endpoints are available:
 
 ## Usage
 
-Make a copy of [.env.dev](.env.dev) file named `.env`, and make sure all the **ENVIRONMENT_VARIABLES** are set.
+Make a copy of [.env.sample](.env.sample) file named `.env`, and make sure all the **ENVIRONMENT_VARIABLES** are set.
 
 ```bash
-$ cp .env.dev .env  # make a copy of .env.dev called .env
+$ cp .env.sample .env  # make a copy of .env.sample called .env
 ```
 
 ### (1) Development
@@ -48,7 +48,7 @@ Make sure you have both [docker](https://www.docker.com/) and
 [docker-compose](https://docs.docker.com/compose/) installed locally.
 
 ```bash
-$ docker-compose -f .devops/docker-compose.yml up --build
+$ make build-start-container-dev
 ````
 
 ☝🏽The app should be available on [http://127.0.0.1](http://127.0.0.1)
@@ -88,6 +88,20 @@ Prerequisites:
 - [Node.js](https://nodejs.org/en/)
 - [MySQL](https://www.mysql.com/) or [PostgreSQL](https://www.postgresql.org/)
 
+<u>IMPORTANT</u>:
+
+1. You need to create a **.env** file in the project root, and copy all the **ENVIRONMENT_VARIABLES** in [.env.sample](./.env.sample) to it.
+2. Make sure to add your **PUBLIC KEY** in [config/cert](config/cert), the name of the key is to be specified in the **.env** file as **SSL_CERT**.
+
+With [Docker](https://www.docker.com/):
+
+```bash
+# DATABASE_URL is of the form: mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}
+$ make build-start-container-prod DATABASE_URL=url_to_your_prod_db
+```
+
+Without [Docker](https://www.docker.com/):
+
 You may follow [this guide](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04) to set up your server.
 
 
@@ -96,14 +110,6 @@ $ cd /var/www
 $ git clone git@github.com:clovisphere/mpesa-b2b-wrapper.git
 $ sudo chown -R $USER:www-data /var/www/mpesa-b2b-wrapper
 $ sudo chmod -R 755 /var/www/mpesa-b2b-wrapper
-```
-
-<u>IMPORTANT</u>:
-
-1. You need to create a **.env** file in the project root, and copy all the **ENVIRONMENT_VARIABLES** in [.env.dev](./.env.dev) to it.
-2. Make sure to add your **PUBLIC KEY** in [config/cert](config/cert), the name of the key is to be specified in the **.env** file as **SSL_CERT**.
-
-```bash
 $ pip install pipenv
 $ pipenv install --system --deploy --ignore-pipfile
 $ npm install pm2 -g
