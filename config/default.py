@@ -30,7 +30,7 @@ class Config:
 
 class TestingConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI_TEST')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('SQLALCHEMY_DATABASE_URI_TEST', "sqlite:///./demo.db")
 
 
 class DevelopmentConfig(Config):

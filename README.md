@@ -28,10 +28,10 @@ The below endpoints are available:
 
 ## Usage
 
-Make a copy of [.env.sample](.env.sample) file named `.env`, and make sure all the **ENVIRONMENT_VARIABLES** are set.
+Make a copy of [env.sample](env.sample) file named `.env`, and make sure all the **ENVIRONMENT_VARIABLES** are set.
 
 ```bash
-$ cp .env.sample .env  # make a copy of .env.sample called .env
+$ cp env.sample .env  # make a copy of .env.sample called .env
 ```
 
 ### (1) Development
@@ -90,7 +90,7 @@ Prerequisites:
 
 <u>IMPORTANT</u>:
 
-1. You need to create a **.env** file in the project root, and copy all the **ENVIRONMENT_VARIABLES** in [.env.sample](./.env.sample) to it.
+1. You need to create a **.env** file in the project root, and copy all the **ENVIRONMENT_VARIABLES** in [env.sample](./env.sample) to it.
 2. Make sure to add your **PUBLIC KEY** in [config/cert](config/cert), the name of the key is to be specified in the **.env** file as **SSL_CERT**.
 
 With [Docker](https://www.docker.com/):
