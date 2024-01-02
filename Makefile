@@ -1,6 +1,6 @@
 .PHONY:  build-start-container-dev build-start-container-prod stop-container
 
-SERVICE=MPESA-B2B-WRAPPER
+SERVICE=MPESA-B2B-API-WRAPPER
 DB=${DATABASE_URL}
 
 build-start-container-dev:

@@ -51,32 +51,55 @@ Make sure you have both [docker](https://www.docker.com/) and
 $ make build-start-container-dev
 ````
 
-☝🏽The app should be available on [http://127.0.0.1](http://127.0.0.1)
-
 Without [Docker](https://www.docker.com/):
 
 ```bash
-$ git clone git@github.com:clovisphere/mpesa-b2b-wrapper.git  # clone the repo
-$ cd mpesa-b2b-wrapper  # cd into project root
-$ export FLASK_ENV=development  # enable development mode
-$ export SECRET_KEY=$(python -c "import secrets;print(secrets.token_urlsafe(16))") # generate a secret key
-$ pipenv install # install dependencies
-$ pipenv shell  # activate virtualenv
-$ flask db upgrade  # run migrations
-$ flask run --debug  # run the app in debug mode
+# clone the repo
+$ git clone git@github.com:clovisphere/mpesa-b2b-wrapper.git
+# cd into project root
+$ cd mpesa-b2b-wrapper
+# generate a secret key
+$ export SECRET_KEY=$(python -c "import secrets;print(secrets.token_urlsafe(16))")
+# set database
+$ export SQLALCHEMY_DATABASE_URI_DEV=sqlite:///demo-dev.db
+# install dependencies
+$ pipenv install
+# activate virtualenv
+$ pipenv shell
+# run migrations
+$ flask db upgrade
+# run the app in debug mode
+$ flask run --debug --host=0.0.0.0 --port=8000
 ```
 
 If you need any help with migration, please refer to [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/).
 
+Test it out:
+
+1. [/health](http://localhost:8000/health)
+
+with [httpie](https://httpie.io/):
+
+```http :8000/health```
+
+you'd get:
+
+```json
+{
+    "status": "healthy 😊"
+}
+```
+
 To run unittest,
 
 ```bash
-$ pipenv install --dev  # install dev dependencies
-$ coverage run -m pytest  # run tests
-$ coverage report -m  # generate coverage report
+# install dev dependencies
+$ pipenv install --dev
+ # run tests
+$ coverage run -m pytest
+# generate coverage report
+$ coverage report -m
 ```
-
-If all went well, your app should be available on [http://127.0.0.1:5000](http://127.0.0.1:5000)
 
 
 ### (2) Production

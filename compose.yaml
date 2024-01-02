@@ -4,24 +4,26 @@ services:
       context: .
       args:
         ENVIRONMENT: development
+    container_name: web
     volumes:
       - .:/code
     ports:
-      - "8000:5000"
+      - "9999:9999"
     environment:
       - SQLALCHEMY_DATABASE_URI_DEV=postgresql://demo:demo@db:5432/demo
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
-      test: curl --fail -s http://127.0.0.1:8000/health || exit 1
-      interval: 20s
+      test: curl --fail -s http://127.0.0.1:9999/health || exit 1
+      interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 10s
+      start_period: 30s
 
   db:
     image: postgres:latest
+    container_name: db
     restart: always
     volumes:
       - db-data:/var/lib/postgresql/data
@@ -52,7 +54,7 @@ services:
     image: nginx:latest
     container_name: nginx
     ports:
-      - 8088:80
+      - 8000:80
     volumes:
       - $PWD/.devops/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:

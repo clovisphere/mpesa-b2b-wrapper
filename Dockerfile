@@ -12,7 +12,7 @@ RUN pip install --upgrade pip importlib_metadata pipenv
 COPY ./Pipfile ./Pipfile.lock* /tmp/
 
 # Generate a requirements.txt from Pipfile.lock
-RUN pipenv requirements
+RUN pipenv requirements > requirements.txt
 
 # Deploy application to a lean image
 FROM python:${PYTHON_VERSION}-alpine3.17
